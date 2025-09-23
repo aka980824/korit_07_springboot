@@ -21,7 +21,7 @@ public class Car {
     private int price;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "owner")
+    @JoinColumn(name = "owner_id")
     private Owner owner;
 
     // 생성자 (owner 포함)
