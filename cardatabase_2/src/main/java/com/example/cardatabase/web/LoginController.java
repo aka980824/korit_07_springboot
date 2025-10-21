@@ -25,11 +25,14 @@ public class LoginController {
     public ResponseEntity<?> getToken(@RequestBody AccountCredentials credentials) {
         UsernamePasswordAuthenticationToken creds =
                 new UsernamePasswordAuthenticationToken(credentials.username(), credentials.password());
+        // credentials.username() 이거 저희가 Record로 만들었기 때문에 getUsername()이 아닌 것에 주목하셔야 합니다.
 
         Authentication auth = authenticationManager.authenticate(creds);
 
+        // 토큰 생성 - jwts를 지역변수로 보셔도 무방하죠.
         String jwts = jwtService.getToken(auth.getName());
 
+        // 생성된 토큰으로 응답을 빌드
         return ResponseEntity
                 .ok()
                 .header(HttpHeaders.AUTHORIZATION, "Bearer " + jwts)

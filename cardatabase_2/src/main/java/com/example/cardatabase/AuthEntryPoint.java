@@ -7,8 +7,6 @@ import org.springframework.http.MediaType;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -20,6 +18,6 @@ public class AuthEntryPoint implements AuthenticationEntryPoint {
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         response.setContentType(MediaType.APPLICATION_JSON_VALUE);
         PrintWriter writer = response.getWriter();
-        writer.println("Error : " + authException.getMessage());
+        writer.println("Error : wrong id or password" + authException.getMessage());
     }
 }

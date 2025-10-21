@@ -1,14 +1,12 @@
 package com.example.cardatabase;
 
 import com.example.cardatabase.service.JwtService;
-import com.example.cardatabase.service.UserDetailsServiceImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
-import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,12 +23,15 @@ public class AuthenticationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        // 토큰 가져오기
         String jws = request.getHeader(HttpHeaders.AUTHORIZATION);
-        if(jws != null) {
-            // token
-            String user = jwtService.getAuthUser(request);
+        if (jws != null) {
+            // 토큰 검증 및 사용자 가져오기
+            String user = jwtService.getAuthUser(request);  // 여기 작성 방식이 매우 유사합니다.
             // 인증
-            Authentication authentication = new UsernamePasswordAuthenticationToken(user, null, Collections.emptyList());
+            Authentication authentication = new UsernamePasswordAuthenticationToken(
+                    user, null, Collections.emptyList()
+            );
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
         filterChain.doFilter(request, response);
