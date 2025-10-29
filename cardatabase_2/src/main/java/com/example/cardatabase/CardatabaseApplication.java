@@ -46,7 +46,7 @@ public class CardatabaseApplication implements CommandLineRunner {
         repository.save(new Car("Hyundai", "Sonata", "White", "1234567890ABCDEFG", 2025, 25000000, owner2));
 //        repository.save(new Car("Honda", "CR-V", "Black-White", "987654321ZYXWVUTS", 2024, 45000000, owner2));
 //        repository.save(new Car("Toyota", "RAV4", "White", "TGRV42024ABC12345", 2024, 35500000, owner1));
-//        repository.save(new Car("Kia", "Sportage", "Grey", "KISP0023XYZ987654", 2023, 32000000, owner1));
+//        repository.save(new Car("Kia", "Sportage", "Grey", " KISP0023XYZ987654", 2023, 32000000, owner1));
 //        repository.save(new Car("Hyundai", "Tucson", "Black", "HNTUC2022DEF67890", 2022, 29000000, owner2));
 //        repository.save(new Car("Tesla", "Model Y", "White", "TSLYY25GHJ4567890", 2025, 65000000, owner2));
 //        repository.save(new Car("Honda", "Civic", "Red", "HNCIV24KLM1234567", 2024, 28000000, owner1));
